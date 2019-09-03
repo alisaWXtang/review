@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+        //语法：Array.isArray(arr)；返回值：Boolean
+        var arr = [],obj = {};
+        console.log(Array.isArray(arr));
+        console.log(Array.isArray(obj));
+*/
+
+
+/*      //语法：Array.filter();返回新数组，不会改变原数组，不对空数组进行检测
+        //只能做筛选，此方法会遍历玩数组
+        var arr = [1,2,3,4];
+        var newarr = arr.filter((item,index)=>{
+            return item%2;
+        });
+        console.log(newarr);
+*/
+
+
+/*
+        //不会改变原数组 ，不会对空数组进行检测，只能做筛选，此方法满足条件立即跳出
+        var arr =[1,2,3,4,5];
+        var newarr = arr.find((item,index)=>{
+            return item===(1||2);
+        })
+        console.log(newarr);
+*/
+
+/*
+        //语法：arr.every();返回值boolean
+        //检测数组中每一个元素是否都通过了callback测试（全部）
+        var arr = [1,2,3,4];
+        var arr1 = [1,2,3,"4"];
+        var newarr = arr.every((item)=>{
+            return typeof item==='number';
+        });
+        var newarr1 = arr1.every((item)=>{
+            return typeof item==='number';
+        });
+        console.log(newarr);
+        console.log(newarr1);
+*/
+    </script>
+</body>
+</html>

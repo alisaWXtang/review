@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+            
+    <p>点击按钮将数组中的所有值乘以特定数字。</p>
+    <p>乘以: <input type="number" id="multiplyWith" value="10"></p>
+    <button onclick="numbers.forEach(myFunction)">点我</button>
+
+    <p>计算后的值: <span id="demo"></span></p>
+
+    <script>
+    var numbers = [65, 44, 12, 4];
+
+    function myFunction(item,index,arr) {
+        // arr[index] = item * document.getElementById("multiplyWith").value;
+        // demo.innerHTML = numbers;
+        console.log(item,index,arr);
+        console.log(arr[index]);
+    }
+    console.log(numbers);
+    </script>
+</body>
+</html>

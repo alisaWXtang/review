@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // find（）函数用来查找目标元素:
+        //        找不到返回undefine
+        //        找到就返回该元素  
+
+
+        var stu = [
+            {
+                name: '张三',
+                gender: '男',
+                age: 20
+            },
+            {
+                name: '王小毛',
+                gender: '男',
+                age: 20
+            },
+            {
+                name: '李四',
+                gender: '男',
+                age: 20
+            }
+        ];
+         function getstu(el){
+             return el.name =='李四'; 
+         }   
+        console.log( stu.find(getstu));
+    </script>
+</body>
+
+</html>
