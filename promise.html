@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+// new Promise((resolve, reject) => {
+//     //做一些异步操作
+//     setTimeout(() => {
+//         console.log('执行完成');
+//         resolve('我是成功！！');
+//     }, 2000);
+// 	reject('123456')
+// 	
+// }).then((data)=>{
+// 	console.log(data+'then')
+// }).catch((err)=>{
+// 	console.log(err+'err')
+// })
+
+
+    let p = new Promise((resolve, reject) => {
+        //做一些异步操作
+      setTimeout(function(){
+            var num = 0; //生成1-10的随机数
+            if(num<=5){
+                resolve(num);
+            }
+            else{
+                reject('数字太大了');
+            }
+      }, 2000);
+    });
+    p.then((data) => {
+            console.log('resolved',data);
+        }
+    ).catch((err) => {
+            console.log('rejected',err);
+        })
+
+</script>
+	</body>
+</html>

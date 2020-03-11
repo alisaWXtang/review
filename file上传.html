@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div @click="$refs.file.click()"></div>
+		<input type="file" ref="file" @change="changefile" style="display:nane" accept="image/*"/>
+	</body>
+</html>

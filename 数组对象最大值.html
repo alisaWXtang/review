@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = [
+				{
+					name:'1号',id:1
+				},
+			{
+				name:'2号',id:2
+			},	{
+					name:'3号',id:3
+				},	{
+					name:'4号',id:4
+				},	{
+					name:'5号',id:5
+				},
+				{
+					name:'6号',id:2
+				}
+			]
+			let max = obj[5].id
+			obj.forEach(item=>{
+				if(item.id>max){
+					max = item.id
+					console.log(item.id,'item.id')
+				}
+			})
+			console.log(max,'max')
+		</script>
+	</body>
+</html>

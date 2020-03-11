@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let arr = [
+				{id:8,name:'aa'},
+				{id:6,title:'cc'},
+				{id:7,title:'bb'},
+				{id:8,title:'aa'},
+				{id:8,title:'aa'},
+				{id:6,title:'cc'},
+			]
+			let newArr = arr.filter((item)=>{
+				return item.id==8 || item.id==6
+			})
+			// console.log(newArr,'arrr')
+			// 
+			
+			
+			
+			let list = [{
+			                name: 'ZS',
+			                age: '21',
+			                Address:'深圳'
+			            },{
+			                name: 'LS',
+			                age: '10',
+			                Address:'广州'
+			            },{
+			                name: 'WW',
+			                age: '23',
+			                Address:'东莞'
+			            },{
+			                name: 'XX',
+			                age: '24',
+			                Address:'深圳'
+			            },{
+			                name: 'XX',
+			                age: '24',
+			                Address:'深莞东'
+			            }]
+					let copylistData = JSON.parse(JSON.stringify(list));
+					let inputValue1 = '深'
+					let inputValue2 ='莞'
+					let inputValue3 = '东'
+			      if(inputValue1 !=='' ||  inputValue2 !== '' || inputValue3 !== ''){
+			        list = list.filter(item=>{
+			          return (item.Address.includes(inputValue1) && item.Address.includes(inputValue2)&&item.Address.includes(inputValue3))
+			        })
+			      }else{
+			        list = copylistData
+			      }
+			console.log(list,'list')
+		</script>
+	</body>
+</html>

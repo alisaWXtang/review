@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.tip {
+				  box-sizing: border-box;
+				  text-align: center;
+				  padding: 14px 0px;
+			      width: 80px;
+			      border: 1px solid #00adb5;
+			      border-radius: 4px;
+			      position: relative;
+			      background-color: #fff;
+			      filter: drop-shadow(0px 2px 4px rgba(64, 158, 225, 0.9));
+				  }
+				  .tip div:nth-child(2){
+					  margin: 20px 0px;
+				  }
+			      .tip::before {
+			        content: "";
+			        width: 0;
+			        height: 0;
+			        border-style: solid;
+			        border-width: 0 10px 10px 10px;
+			        border-color: transparent transparent #fff transparent;
+			        position: absolute;
+			        top: -10px;
+			        left: 0;
+			        right: 0;
+			        margin: auto;
+			        z-index: 2;
+			      }
+			      .tip::after {
+			        content: "";
+			        width: 0;
+			        height: 0;
+			        border-style: solid;
+			        border-width: 0 10px 10px 10px;
+			        border-color: transparent transparent #00adb5 transparent;
+			        position: absolute;
+			        top: -11px;
+			        left: 0;
+			        right: 0;
+			        margin: auto;
+			        z-index: 1;
+			      }
+			    
+		</style>
+	</head>
+	<body>
+		<div class="tip">
+			<div>
+				编辑
+			</div>
+			<div>
+				删除
+			</div>
+			<div>
+				下载
+			</div>
+		</div>
+	</body>
+</html>

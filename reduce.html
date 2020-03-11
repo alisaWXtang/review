@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var goodsData = [
+				{ name: '苹果1', count: 1, price: 23 },
+				{ name: '苹果2', count: 1, price: 2.3 },
+				{ name: '苹果3', count: 5, price: 5.9 },
+				{ name: '苹果4', count: 1, price: 12.9 },
+				{ name: '苹果5', count: 1, price: 23 },
+				{ name: '苹果6', count: 1, price: 69 },
+				{ name: '苹果7', count: 1, price: 16 },
+				{ name: '苹果8', count: 1, price: 3.5 },
+			]
+			 var a= goodsData.reduce((prv,next)=>{
+				// return prv+next.count)
+				return prv+next.count
+			},0)
+			console.log(a,'a')
+			var arr = [1,2,3,4,5,6,7,8,98,45];
+			 var  sum = arr.reduce((prv,next)=>{
+				return prv+next
+			},0)
+			console.log(sum,)
+		</script>
+	</body>
+</html>

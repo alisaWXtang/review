@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value />
+		<div id="div"></div>
+		<script type="text/javascript">
+			var obj = {
+			   name:'你好'
+			}
+			// obj.name =  '不好'
+			console.log(obj.name,'obj.name')
+			Object.defineProperty(obj,'name',{
+				set(val){
+					console.log(val,'val')
+					// InpDom.value = val
+					// DivDom.innerText = val;
+				},
+				get(){
+					return 'jashf'
+				}
+			})
+			console.log(obj.name)
+			/*
+			var InpDom = document.querySelector('#txt'),DivDom = document.querySelector('#div');
+			console.dir(DivDom,'DivDom')
+			var obj = {
+			   name:'你好'
+			}
+			
+			Object.defineProperty(obj,'name',{
+				set(val){
+					console.log(val)
+					InpDom.value = val
+					DivDom.innerText = val;
+				},
+				get(){
+					return InpDom.value
+				}
+			})
+			
+			
+		    InpDom.oninput = function(){
+			   obj.name = InpDom.value;
+			   DivDom.innerText = obj.name;
+		    }
+		   */
+		   
+		   /*
+		   //对所有属性都要蒋婷,递归遍历所有属性
+		   function defineReactive(data,key,val) {
+		       observe(val);  //递归遍历所有的属性
+		       Object.defineProperty(data,key,{
+		           enumerable:true,         //当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。
+		           configurable:true,       //当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中
+		           get:function() {
+		               return val;
+		           },
+		           set:function(newVal) {
+		               val = newVal;
+		               console.log('属性'+key+'已经被监听,现在值为:"'+newVal.toString()+'"');
+		           }
+		       })
+		   }
+		   
+		   function observe(data) {
+		   	// debuger;
+		       if(!data || typeof data !== 'object') {
+		           return;
+		       }
+		       Object.keys(data).forEach(function(key){
+		           defineReactive(data,key,data[key]);
+		       });
+		   }
+		   
+		   var library = {
+		       book1: {
+		           name: ''
+		       },
+		       book2: ''
+		   };
+		   observe(library);
+		   library.book1.name = 'vue权威指南'; // 属性name已经被监听了，现在值为：“vue权威指南”
+		   library.book2 = '没有此书籍';  // 属性book2已经被监听了，现在值为：“没有此书籍”
+		   */
+		</script>
+	</body>
+</html>

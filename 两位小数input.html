@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		          <input step="1"  min="0" 
+				  onkeyup="this.value= this.value.match(/^\d+(\.\d{0,2})?/) ?
+				   this.value.match(/\d+(\.\d{0,2})?/)[0] : ''">
+	<script type="text/javascript">
+		let str = "0.099"
+		let reg = /^\d+(\.\d{0,2})?/
+		console.log(str.match(reg),'to')
+	</script>
+	</body>
+</html>

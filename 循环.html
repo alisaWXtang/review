@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var arr = ['nick','freddy','mike','james'];
+			arr.forEach(function(item,index,arr){
+			    console.log(item);
+			    console.log(index);
+			    console.log(arr);
+			});
+			
+			
+			var data=[1,3,4]
+			
+			var Squares=data.map(function(item,index,arr){
+			  console.log(arr[index]==item);  // ==> true
+			  return item*item           
+			})
+			console.log(Squares);        // ==> [1, 9, 16]
+			
+			
+			
+			
+			var arr = ['nick','freddy','mike','james'];
+			var userMsg = {
+			    nick: {
+					name: 'nick',
+					age: 18,
+					sex: '男'	
+			    },
+			    freddy: {
+					name: 'freddy',
+					age: 24,
+					sex: '男'
+			    }	
+			};
+			 
+			for(var index in arr){	
+			    console.log(index +'. ' + arr[index]);
+			}
+			console.log('---------------------------------');
+			for(var key1 in userMsg){
+			    console.log(key1,'key1');	
+			    for(var key2 in userMsg[key1]){
+				console.log(key2 +': ' + userMsg[key1][key2],1111111111);
+			    }
+			}
+		</script>
+	</body>
+</html>

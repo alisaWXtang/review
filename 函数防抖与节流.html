@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 200px;
+				height: 200px;
+				background: #aca;
+			}
+			#dev{
+				width: 200px;
+				height: 200px;
+				background: #15611f;	
+							margin-top: 20px;
+							font-size: 50px;
+							text-align: center;
+							line-height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<div id="dev">bad</div>
+		<div id="dav"></div>
+		<script type="text/javascript">
+			document.querySelector('#div').onmousemove = debounce(fn);
+			function fn(){
+				console.log('防抖了')
+			}
+			function debounce(cb){
+				var Timer = null;
+				return function(){
+					clearTimeout(Timer)  //清除以前的
+					Timer = setTimeout(()=>{   // 只留下最后一个事件被调用
+						cb()
+					},300)
+				}
+			}
+			
+			
+			
+			
+			document.querySelector('#dev').onmousemove = async function(){
+					var T= null
+					clearTimeout(T)
+					T = await setTimeout(()=>{
+						console.log('dev执行了')
+					},500)
+				}
+				
+				
+			// document.querySelector('#dav').onmousemove = debounce(fn);
+			// function fn(){
+			// 	console.log('节流了')
+			// }
+			// function debounce(cb){
+			// 	var T1 = null;
+			// 	var Flag = true
+			// 	return function(){
+			// 		clearTimeout(Timer)
+			// 		// var Timer = null;
+			// 		console.log(Timer)
+			// 		Timer = setTimeout(()=>{
+			// 			cb()
+			// 		},500)
+			// 	}
+			// }	
+		</script>
+	</body>
+</html>

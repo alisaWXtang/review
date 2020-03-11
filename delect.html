@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var Employee = {
+			  age: 28,
+			  name: 'abc',
+			  designation: 'developer'
+			}
+			
+			if(delete Employee.name){
+				console.log('删除成功')
+			}  // returns true
+			console.log(delete Employee.age);    // returns true
+			
+			// 当试着删除一个不存在的属性时
+			// 同样会返回true
+			console.log(delete Employee.salary); // returns true
+		</script>
+	</body>
+</html>

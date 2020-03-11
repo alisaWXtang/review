@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">按钮</button>
+	</body>
+	<script type="text/javascript">
+		document.querySelector('#btn').addEventListener('click',de())
+		function de(){
+			debugger
+			let timer;
+			return function (){
+				if(timer) clearTimeout(timer);
+				timer = setTimeout(()=>{
+					console.log('17')
+				},500)
+			}
+		}
+	</script>
+</html>

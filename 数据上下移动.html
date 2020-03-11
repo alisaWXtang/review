@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" onclick="swapArr(arr,2,3)">数组交换位置</button>
+		<script type="text/javascript">
+			var arr = [1,2,3,  4,5,6,7,8,9];
+								 //2	//3
+			function swapArr(arr,index1,index2){
+				arr[index1] = arr.splice(index2,1,arr[index1])[0];
+				console.log(arr,'arr')
+				return arr;
+			}
+			console.log(swapArr(arr,2,1),'交换位置')
+			
+			
+			
+			var Arry = [2,3,4,5,6,7,8,9]
+			let a = Arry.splice(2,1,10)
+			console.log(a,'aaa')
+			console.log(Arry,'Arry')
+			
+		</script>
+	</body>
+</html>

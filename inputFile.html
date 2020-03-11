@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 200px;
+				height: 200px;
+				background: #aca;;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="file" id="file" name="file" >
+		<div id="div" onclick="divFn(event)">
+			
+		</div>
+		<script type="text/javascript">
+			var FDom = document.getElementById('file')
+			FDom.addEventListener('change',function(e){console.log(e,'eeeeeee')})
+		</script>
+	</body>
+</html>
