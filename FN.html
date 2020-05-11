@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function setDateList(line = 3) {
+			  const d = new Date()
+			  const year = d.getFullYear()
+			  const mArr = [] // 一年内所有月份
+			  const activeMArr = [] // 月份段
+			  const tabDateArr = [] // 时间周期段
+			  for (let i = 1; i <= 12; i++) { // 设置一年内所有月份
+			    mArr[i - 1] = i
+			  }
+			  console.log(mArr,'mArr')
+			  for (let i = 0; i < 12; i += line) { // 设置月份段
+			    activeMArr.push(mArr.slice(i, i + line))
+			  }
+			  console.log(activeMArr,'activeMArr')
+			  activeMArr.forEach(item => { // 设置时间周期段
+			    const ele = {}
+			    ele.beginMonth = item[0]
+			    ele.endMonth = item[2]
+			    ele.year = year
+			    ele.beginDate = year + '-' + item[0]
+			    ele.endDate = year + '-' + item[2]
+			    tabDateArr.push(ele)
+			  })
+			  return tabDateArr
+			}
+			console.log(setDateList(),'kkkkkkkkkkk')
+			function dateQuantum() {
+			  const d = new Date()
+			  const month = d.getMonth() + 1
+			  const tabDateArr = setDateList()
+			  const query = {}
+			  tabDateArr.forEach(item => {
+			    // 判断系统当前时间，属于哪个时间段
+			    if (month >= item.beginMonth && month <= item.endMonth) {
+			      query.beginDate = item.beginDate
+			      query.endDate = item.endDate
+			    }
+			  })
+			  return query
+			}
+			console.log(dateQuantum() ,'fffffffffffff')
+		</script>
+	</body>
+</html>

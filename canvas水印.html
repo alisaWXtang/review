@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.canvasDiv{
+				width: 1200px;
+				height: 1200px;
+				background: #aacccaa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="canvasDiv"></div>
+		<script type="text/javascript">
+			var options = {
+				el: 'body', // 需要添加水印的容器
+				top: '0px', // 水印在容器中的top起始值
+				left: '0px', // 水印在容器中的left起始值
+				text: 'water mask', // 显示的水印文本
+				// 是否允许通过js或开发者工具等途径修改水印DOM节点（水印的id，attribute属性，节点的删除）
+				// true为允许，默认不允许
+				inputAllowDele: false,
+				// 是否在组件销毁时去除水印节点（前提是允许用户修改DOM，否则去除后会再次自动生成）
+				// true会，默认不会
+				inputDestroy: false,
+				width: '400',
+				height: '230',
+				alpha: 0.08 // 水印文本透明度
+			  }
+			const canvas = document.createElement('canvas')
+			  const opt = options
+			  const width = opt.width
+			  const height = opt.height
+			  // if (!document.querySelector(opt.el)) return
+			  canvas.id = 'canvas'
+			  canvas.width = width // 单个水印的宽高
+			  canvas.height = height
+			  this.maskDiv = document.createElement('div')
+			  const ctx = canvas.getContext('2d')
+			  ctx.font = 'normal 12px Microsoft Yahei' // 设置样式
+			  ctx.fillStyle = 'rgba(112, 113, 114,' + opt.alpha + ')}' // 水印字体颜色
+			  ctx.rotate(-Math.PI / 8) // 水印偏转角度
+			  ctx.textAlign = 'left'
+			  ctx.textBaseline = 'bottom'
+			  ctx.globalAlpha = opt.alpha // text alpha
+			  ctx.translate(0, height * 0.5) // margin: 10
+			  ctx.fillText(opt.text, 30, 10)
+			  const src = canvas.toDataURL('image/png')
+			  this.maskDiv.style.position = 'absolute'
+			  this.maskDiv.style.zIndex = '10000000000000099'
+			  this.maskDiv.style.top = opt.top
+			  this.maskDiv.style.left = opt.left
+			  this.maskDiv.style.height = '100%'
+			  this.maskDiv.style.width = '100%'
+			  this.maskDiv.style.pointerEvents = 'none'
+			  this.maskDiv.style.backgroundImage = 'URL(' + src + ')'
+			  this.maskDiv.id = '_waterMark'
+			  // 水印节点插到body下
+			  // 将水印节点插入到特定组件里
+			  // console.log(document.querySelector('.canvasDiv'))
+			  document.querySelector('.canvasDiv').appendChild(this.maskDiv)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .box {
+        background-color: #f0f3f9;
+        padding: 10px;
+        margin: 10px 0 20px;
+        overflow: hidden;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
+    .min-content {
+        width: -webkit-min-content;
+        width: -moz-min-content;
+        width: min-content;
+    }
+	.pStyle{
+		width: 600px;
+		margin: 0 auto;
+		background: palegoldenrod;
+	}
+	.piv{
+		background: green;
+	}
+	.tr{
+		width: 600px;
+		background: yellow;
+	}
+</style>
+<body>
+<strong>display:inline-block;</strong>
+<div class="box inline-block">
+    <img src="./imgs/id2.png">
+    <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。</p>
+</div>
+
+<strong>width: min-content;</strong>
+<div class="box min-content">
+    <img src="./imgs/id2.png">
+    <p class="pStyle">display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。</p>
+</div>
+<div class="piv"><div class="tr">爱上了尽快发货的；奥科吉水电费爱上了尽快发货的；奥科吉水电费爱上了尽快发货的；奥科吉水电费</div></div>
+</body>
+</html>

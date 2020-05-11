@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="editor" contenteditable style="width: 100%; height: 200px; border: 1px solid #ccc"></div>
+		<p id="textinputcount">还可以输入1000字</p>
+		<script>
+			var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+			var editor = document.querySelector('#editor');
+
+			var textinputcount = document.querySelector('#textinputcount');
+
+			var observer = new MutationObserver(function(mutations) {
+				mutations.forEach(function(mutation) {
+					if (mutation.type == "characterData") {
+						var newValue = mutation.target.textContent;
+						textinputcount.innerHTML = "还可以输入" + (1000 - newValue.length + "字");
+					}
+				});
+			});
+			console.log(observer,'observerobserver')
+			observer.observe(editor, {
+				childList: true,   //====可以观察子元素
+				attributes: true,  //====可以观察属性
+				characterData: true,  //====可以观察数据
+				characterDataOldValue: true,  //====*true 可以保存数据旧值
+				subtree: true
+			});
+		</script>
+	</body>
+</html>

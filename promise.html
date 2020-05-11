@@ -6,40 +6,218 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-// new Promise((resolve, reject) => {
-//     //做一些异步操作
-//     setTimeout(() => {
-//         console.log('执行完成');
-//         resolve('我是成功！！');
-//     }, 2000);
-// 	reject('123456')
-// 	
-// }).then((data)=>{
-// 	console.log(data+'then')
-// }).catch((err)=>{
-// 	console.log(err+'err')
-// })
+/*
+new Promise((resolve, reject) => {
+    //做一些异步操作
+    setTimeout(() => {
+        console.log('执行完成');
+        resolve('我是成功！！');
+    }, 2000);
+	reject('123456')
+	
+}).then((data)=>{
+	console.log(data+'then')
+}).catch((err)=>{
+	console.log(err+'err')
+})
+*/
 
 
-    let p = new Promise((resolve, reject) => {
-        //做一些异步操作
-      setTimeout(function(){
-            var num = 0; //生成1-10的随机数
-            if(num<=5){
-                resolve(num);
-            }
-            else{
-                reject('数字太大了');
-            }
-      }, 2000);
-    });
-    p.then((data) => {
-            console.log('resolved',data);
-        }
-    ).catch((err) => {
-            console.log('rejected',err);
-        })
 
+
+
+/*
+new Promise((resolve, reject) => {
+    //做一些异步操作
+	var rand = Math.random();
+    if(rand<0.6){
+        console.log(rand);
+        resolve('太小了');
+    }else{
+		console.log(rand);
+		reject('太大了')
+	}
+	
+}).then((data)=>{
+	console.log(data+'then')
+}).catch((err)=>{
+	console.log(err+'err')
+})
+*/
+
+
+
+
+
+/*
+let p = new Promise((resolve, reject) => {
+	//做一些异步操作
+  setTimeout(function(){
+		var num = 0; //生成1-10的随机数
+		if(num<=5){
+			resolve(num);
+		}
+		else{
+			reject('数字太大了');
+		}
+  }, 2000);
+});
+p.then((data) => {
+		console.log('resolved',data);
+	}
+).catch((err) => {
+		console.log('rejected',err);
+	})
+*/
+	   
+	   
+	   
+	   
+	   
+/*
+// No.1
+//promise的参数会立即执行（按顺序）
+		var p = new Promise((resolve,reject)=>{
+			console.log('a');
+			resolve('c')
+		})
+		console.log('b')
+		p.then((resolve)=>{
+			console.log(resolve)
+		})
+*/
+
+
+
+
+
+/*	
+// N0.2promise 状态
+var p = new Promise((resolve,reject)=>{
+			// setTimeout(()=>{
+				// resolve('a')
+				// reject('b')
+				console.log('l')
+			// },2000)
+		})
+		console.log(p)
+		// p.then((resolve)=>{
+		// 	console.log(resolve)
+		// })
+		// p.catch((reject)=>{
+		// 	console.log(reject)
+		// })
+		
+*/		
+		
+			
+// /*		
+//第一个异步任务
+	function run_a(){
+		
+		return Promise.resolve([{ // 静态数据配置方式
+		          name: '新建团队回顾',
+		          id: '0',
+		          url: '/teamList?t=' + new Date().getTime()
+		        }])
+				
+				
+				
+	}
+	//第二个异步任务
+	function run_b(data_a){
+		return new Promise(function(resolve, reject){
+			//假设已经进行了异步操作，并且获得了数据
+			console.log(data_a);
+			resolve("step2");
+		});
+	}
+	//第三个异步任务
+	function run_c(data_b){
+		return new Promise(function(resolve, reject){
+			//假设已经进行了异步操作，并且获得了数据
+			console.log(data_b);
+			resolve("step3");
+		});
+	}
+	Promise.all([run_a(),run_b(),run_c()]).then(arr=>{
+		console.log(arr,'arr')
+	})
+/*
+	//连续调用
+	run_a().then(function(data){
+		console.log(data,'ggggggggg')
+		return run_b(data);
+	}).then(function(data){
+		return run_c(data);
+	}).then(function(data){
+		console.log(data);
+	});
+*/
+	
+	/*运行结果
+	  step1
+	  step2
+	  step3
+	*/
+
+// */			
+
+
+/*
+	var run = function(){
+		var _promise = new Promise(function(resolve, reject){
+			setTimeout(function(){
+				var rand = Math.random();
+				if(rand<0.5){
+					resolve("resolve" + rand);
+				}
+				else{
+					reject("reject" + rand);
+				}
+			},1000);
+		});
+		return _promise;
+	}
+	// run();
+// run().then(function(data){
+// 		console.log(data);
+// 	});
+
+*/
+
+/*
+
+	run().then(function(data){
+		//处理resolve的代码
+		console.log("Promise被置为resolve",data);
+	},function(data){
+		//处理reject的代码
+		console.log("程序被置为了reject",data);
+	})
+*/	
+	
+	
+/*
+	
+	run().then(function(data){
+		console.log("第一次",data);
+		return data;
+	}).then(function(data){
+		console.log("第二次",data);
+		return data;
+	}).then(function(data){
+		console.log("第三次",data);
+		return data;
+	});
+	// 异步处理成功的打印结果：
+	// 第一次 resolve0.49040459200760167d.js:18 
+	// 第二次 resolve0.49040459200760167d.js:21 
+	// 第三次 resolve0.49040459200760167
+	// 由此可知then方法可以无限调用下去。
+	
+
+*/	
 </script>
 	</body>
 </html>

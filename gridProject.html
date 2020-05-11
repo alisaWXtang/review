@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.content{
+				width: 800px;
+				height: 600px;
+				display: grid;
+				display: -ms-grid;
+				/* background: red; */
+				-ms-grid-columns:200px auto;
+				-ms-grid-rows: 100px 100% 80px;
+				grid-template-columns:200px auto;
+				grid-template-rows:100px 100% 80px;
+			}
+			.item-1{
+				grid-column-start: 1;
+				grid-column-end: 2;
+				grid-row-start: 1;
+				grid-row-end: 4;
+				-ms-grid-column:1;
+				            /* -ms-grid-row:3; */
+				            -ms-grid-row-span:3;/*确定该元素占3行的高度*/
+				background-color: black;
+				margin-right: 30px;
+			}
+			.item-2{
+				background: red;
+				-ms-grid-column-span:3;
+			}
+			.item-3{
+				background: yellow;
+				margin: 20px 0;
+			}
+			.item-4{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="item-1"></div>
+			<div class="item-2"></div>
+			<div class="item-3"></div>
+			<div class="item-4"></div>
+		</div>
+	</body>
+</html>
