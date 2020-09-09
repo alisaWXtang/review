@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const gegeFn = function (){
+				this.option = {name:'asdf'};
+				this.init()
+			}
+			gegeFn.prototype.init = function(){
+				console.log('pdsf')
+			}
+			// gegeFn.init()
+			const res = new gegeFn()
+		</script>
+	</body>
+</html>

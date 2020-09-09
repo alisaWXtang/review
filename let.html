@@ -8,6 +8,7 @@
 		<div class="div1" style="height: 30px;background: red;"></div>
 		<div class="div2"></div>
 		<script type="text/javascript">
+			/*
 			var div1 = document.querySelector('.div1'),div2 = document.querySelector('.div2')
 				div1.onclick = function(){
 					console.log('div1')
@@ -16,7 +17,45 @@
 					}	
 					console.log(i,'out')
 				}
+				*/
 				// console.log(i,'outfn')
+				
+				
+				// 值大的应该放在前面
+				for(let i=5;i<20;i++){
+					let variable ;
+					if(i>=19){
+						variable = 'TO BIG'
+					}else if(i>=15){
+						variable = 'middle'
+					}else{
+						// console.log(i)
+						variable = 'small'
+					}
+					const obj = {
+						variable
+					}
+					console.log(obj,'obj')
+						
+				}
+				
+				// console.log(obj)
+				
+				
+				
+				// var score=79;
+				//    if(score>90)
+				//    {
+				//     console.log('score>90执行该语句')
+				//    }
+				//    else  if(score>80)
+				//    {
+				//     console.log('score>80执行该语句')
+				//    }
+				//    else
+				//    {
+				//     console.log('不满足上面条件，执行该语句')
+				//    }
 		</script>
 	</body>
 </html>

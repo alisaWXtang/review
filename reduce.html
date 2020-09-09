@@ -7,17 +7,20 @@
 	<body>
 		<script type="text/javascript">
 			var goodsData = [
-				{ name: '苹果1', count: 1, price: 23 },
-				{ name: '苹果2', count: 1, price: 2.3 },
-				{ name: '苹果3', count: 5, price: 5.9 },
-				{ name: '苹果4', count: 1, price: 12.9 },
-				{ name: '苹果5', count: 1, price: 23 },
-				{ name: '苹果6', count: 1, price: 69 },
-				{ name: '苹果7', count: 1, price: 16 },
-				{ name: '苹果8', count: 1, price: 3.5 },
+				[{ name: '苹果1', count: 1, price: 23 }],
+				[{ name: '苹果2', count: 1, price: 2.3 }],
+				[{ name: '苹果3', count: 5, price: 5.9 }],
+				[{ name: '苹果4', count: 1, price: 12.9 }],
+				// { name: '苹果5', count: 1, price: 23 },
+				// { name: '苹果6', count: 1, price: 69 },
+				// { name: '苹果7', count: 1, price: 16 },
+				// { name: '苹果8', count: 1, price: 3.5 },
 			]
+			/*
+			// pre=====为初始值,上一个,结果
 			 var a= goodsData.reduce((prv,next)=>{
 				// return prv+next.count)
+				console.log(prv,'prv',next)
 				return prv+next.count
 			},0)
 			console.log(a,'a')
@@ -25,7 +28,14 @@
 			 var  sum = arr.reduce((prv,next)=>{
 				return prv+next
 			},0)
-			console.log(sum,)
+			console.log(sum,'SUM')
+			*/
+			let item = goodsData.reduce((r, i) => {return [...r, ...i]}, [])
+			console.log(item,'kkkkkkkk')
+			var objarr = [
+				{ name: '苹果5', count: 1, price: 23 },
+			]
+			console.log(objarr[0])
 		</script>
 	</body>
 </html>

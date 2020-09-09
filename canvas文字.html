@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function can() {
+				var options = {
+					el: 'body', // 需要添加水印的容器
+					position: 'absolute',
+					zIndex: '9',
+					top: '0px', // 水印在容器中的top起始值
+					left: '0px', // 水印在容器中的left起始值
+					right: '0px', // 水印在容器中的right起始值
+					bottom: '0px', // 水印在容器中的bottom起始值
+					text: '唐 闻香', // 显示的水印文本
+					inputAllowDele: false,
+					inputDestroy: false,
+					width: '513',
+					height: '355',
+					alpha: 1 // 水印文本透明度
+				}
+				let body = document.querySelector("body")
+				console.log(body,'body')
+				let canvas = document.createElement("canvas")
+				console.log(canvas, 'canvas')
+				let opt = options
+				let width = opt.width
+				let height = opt.height
+				// if (!document.querySelector(opt.el)) return
+				canvas.id = 'canvas'
+				canvas.width = width // 单个水印的宽高
+				canvas.height = height
+				// canvas.fillStyle = 'green';
+				let maskDiv = document.createElement('div')
+				let ctx = canvas.getContext('2d')
+				// ctx.fillStyle = 'green';
+				ctx.font = 'normal 14px Microsoft Yahei' // 设置样式
+				ctx.fillStyle = '#1AA696' // 水印字体颜色
+				ctx.rotate(-Math.PI / 8) // 水印偏转角度
+				ctx.textAlign = 'left'
+				ctx.textBaseline = 'bottom'
+				ctx.globalAlpha = opt.alpha // text alpha
+				ctx.fillText(opt.text, 0, 145)
+				// ctx.translate(18, height *2) // margin: 10
+				// ctx.fillText(opt.text, 10, 355)
+				// ctx.translate(180, height *2) // margin: 10
+				let src = canvas.toDataURL('image/png')
+				maskDiv.style.position = opt.position
+				maskDiv.style.zIndex = opt.zIndex
+				maskDiv.style.top = opt.top
+				maskDiv.style.left = opt.left
+				maskDiv.style.right = opt.right
+				maskDiv.style.bottom = opt.bottom
+				// this.maskDiv.style.height = '100%'
+				// this.maskDiv.style.width = '100%'
+				maskDiv.style.pointerEvents = 'none'
+				maskDiv.style.backgroundImage = 'URL(' + src + ')'
+				maskDiv.id = '_waterMark'
+				// 水印节点插到body下
+				// 将水印节点插入到特定组件里
+				body.appendChild(maskDiv)
+			}
+			can()
+		</script>
+	</body>
+</html>
