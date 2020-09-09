@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+var users = [
+  { 'user': 'barney', 'age': 36, 'active': true },
+  { 'user': 'fred',   'age': 40, 'active': false },
+  { 'user': 'alisa',   'age': 24, 'active': true },
+];
+
+function arrayFilter(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      resIndex = 0,
+      result = [];
+
+  while (++index < length) {
+    var value = array[index];
+	// console.log(predicate(value, index, array),'kkkkk')
+	
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+var a = arrayFilter(users, function(o) { 
+	console.log(arguments,'arguments')
+	return !o.active; });
+console.log(a,'lll')
+		</script>
+	</body>
+</html>
