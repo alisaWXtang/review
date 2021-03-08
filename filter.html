@@ -7,12 +7,12 @@
 	<body>
 		<script type="text/javascript">
 			let arr = [
-				{id:8,name:'aa'},
-				{id:6,title:'cc'},
-				{id:7,title:'bb'},
-				{id:8,title:'aa'},
-				{id:8,title:'aa'},
-				{id:6,title:'cc'},
+				{id:8,name:'aa',hidden:true},
+				{id:6,title:'cc',hidden:true},
+				{id:7,title:'bb',hidden:true},
+				{id:8,title:'aa',hidden:true},
+				{id:8,title:'aa',hidden:true},
+				{id:6,title:'cc',hidden:false},
 			]
 			let sameArr = arr
 			let filterArr = arr.filter(item=>{
@@ -20,7 +20,16 @@
 			})
 			console.log(filterArr===arr,sameArr===arr)
 			let newArr = arr.filter((item)=>{
+
 				return item.id!==8 || item.id!==6
+
+				if(item.hidden){
+					return false
+				}
+				else{
+					return true
+				}
+				// return item.id==8 || item.id==6
 			})
 			console.log(newArr,'arrr')
 			// 
@@ -59,6 +68,7 @@
 			      }else{
 			        list = copylistData
 			      }
+
 			console.log(list,'list')
 			var filterData = {
 				reqtStatusIds: ['all',1,2],
@@ -83,6 +93,8 @@
 				filterData.reqtStatusIds = []
 				console.log(dataCopy,'dataCopy')
 				
+
+			// console.log(list,'list')
 		</script>
 	</body>
 </html>
