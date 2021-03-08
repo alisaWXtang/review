@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		// getCaption('3.4000');
+		function getCaption(str){
+			var index=str.lastIndexOf(".");
+			var num=str.substring(index+1,str.length).length;
+			var res=Number(str).toFixed(num);
+			 alert(res); 
+		}
+	let num =getCaption(6.0090)
+	console.log(num)
+
+    function toDecimal2(x) {  
+        var f = parseFloat(x);  
+        if (isNaN(f)) {  
+            return false;  
+        }  
+        var f = Math.round(x*100)/100;  
+        var s = f.toString();  
+        var rs = s.indexOf('.');  
+        if (rs < 0) {  
+            rs = s.length;  
+            s += '.';  
+        }  
+        while (s.length <= rs + 2) {  
+            s += '0';  
+        }  
+        return s;  
+    }
+
+	function toDecimal(x) {    
+	        var f = parseFloat(x);    
+	        if (isNaN(f)) {    
+	            return false;    
+	        }    
+	        var f = Math.round(x*100)/100;    
+	        var s = f.toString();    
+	        var rs = s.indexOf('.');    
+	        if (rs < 0) {    
+	            rs = s.length;    
+	            s += '.';    
+	        }    
+	        while (s.length <= rs + 2) {    
+	            s += '0';    
+	        }    
+	        return s;    
+	    }
+
+	    function fomatFloat(src,pos){     
+	         return Math.round(src*Math.pow(10, pos))/Math.pow(10, pos);     
+	    }
+
+			// console.log(5.00)
+		</script>
+	</body>
+</html>

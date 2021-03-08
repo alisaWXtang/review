@@ -1,0 +1,99 @@
+<<!-- !DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body {
+            width: 360px;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        setTimeout(function() {  // 模拟耗时操作
+            document.getElementsByTagName('body')[0].innerHTML = '<div class="main"></div>'
+        }, 200)
+
+        var isNightMode = true
+        
+        if (isNightMode) {
+            var style = document.createElement('style')
+            style.innerHTML = ".main{width: 100%;height: 100%;background: #000;}"
+            
+            var head = document.getElementsByTagName('head')[0].appendChild(style)
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body {
+            width: 360px;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.getElementsByTagName('body')[0].innerHTML = '<div class="main"></div>'
+
+        // 模拟插入时模板的耗时操作
+        setTimeout(function() {
+            var isNightMode = true
+            
+            if (isNightMode) {
+                var style = document.createElement('style')
+                style.innerHTML = ".main{width: 100%;height: 100%;background: #000;}"
+                    
+                var head = document.getElementsByTagName('head')[0].appendChild(style)
+            }
+        }, 200)
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+    <script>
+        // 模拟插入时模板的耗时操作
+        setTimeout(function() {
+            var isNightMode = true
+            
+            if (isNightMode) {
+                var style = document.createElement('style')
+                style.innerHTML = "html{background: #000!important;}"
+                    
+                var head = document.getElementsByTagName('head')[0].appendChild(style)
+            }
+        }, 200)
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [
+				{referenceUserId:'10080',
+				seqNo:2},
+				{referenceUserId:'10081',
+				seqNo:5},				
+				// {referenceUserId:'10081',
+				// seqNo:5},
+				{referenceUserId:'10082',
+				seqNo:5},
+				{referenceUserId:'10083',
+				seqNo:5},				
+				{referenceUserId:'10084',
+				seqNo:5},					
+				{referenceUserId:'10084',
+				seqNo:5},	
+			]
+			function Fn (arr){
+				let list = []
+				arr.forEach(item=>{
+					let result = true
+					console.log(item,'item')
+					list.forEach(cell=>{
+						console.log(cell,'cell')
+						if(cell.referenceUserId===item.referenceUserId){
+							result=false
+						}
+					})
+					if(result||list.length<=0){
+						list.push(item)
+					}
+					console.log(list.length,list,'list')
+				})
+				return list
+			}
+			console.log(Fn(arr))
+			
+			
+		</script>
+	</body>
+</html>

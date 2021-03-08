@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script>
+// function (){
+// 	alert("你在输入框内按下一个按键");
+// }
+	function checkNumber(e){
+		const ev = e || event
+		console.log(ev.keyCode,'ev.keyCode')
+		return (/[\d]/.test(String.fromCharCode(ev.keyCode || ev.which))) || ev.which === 8
+	}
+    function myFunction (e) {
+		console.log(e)
+      if (e.target.value.length > 8) {
+        return ''
+      }
+      console.log( checkNumber(e))
+    }
+	// console.log(myFunction(),'ppp')
+</script>
+</head>
+<body>
+
+<p>当用户在输入框内按下一个按键时函数被触发</p>
+<input type="text" onkeypress="myFunction(event)">
+
+</body>
+</html>

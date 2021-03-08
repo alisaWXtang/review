@@ -38,7 +38,15 @@
          function getstu(el){
              return el.name =='李四'; 
          }   
-        console.log( stu.find(getstu));
+        // console.log( stu.find(getstu));
+		let obj = {
+			cascader:'你好',
+			modelList:"ooo"
+		}
+	  var ArrayParams = ['cascader','modelList','mversion','pversionList','androidVersion','net','brand']
+	  /* for(k in ArrayParams ){obj[ArrayParams[k]] = ''} */
+	  console.log(ArrayParams.includes('net'))
+	  
     </script>
 </body>
 

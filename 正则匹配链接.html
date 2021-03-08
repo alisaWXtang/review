@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var sttr = ''
+			var str =`<p><strong>需求背景：https://usp.oppoer.me/proxy/qiankun/prototypeapi/view?versionId=1&amp;productId=812&amp;isLatest=1</strong></p><span><strong>需求背景：https://usp.oppoer.me/proxy/qiankun/prototypeapi/view?versionId=1&amp;productId=812&amp;isLatest=1</strong></span>`
+			var replaceRes = str.replace(/^((https?:\/\/)[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"\s])*)/is,function(w){
+				console.log(w,'w')
+				return w+'3333'
+			})
+			console.log(replaceRes,'eee')
+			var obj = {fg:'333'}	
+			function first(){
+				changVal(obj)
+			}	
+			function changVal (val){
+				val.a = 3
+				console.log(val,'val')
+				
+			}
+			first()
+			console.log(obj,'dddd')
+		</script>
+	</body>
+</html>

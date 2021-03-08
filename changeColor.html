@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="temp-style">adfgsfdgsfdg</div>
+		<div class="child"></div>
+		<script type="text/javascript">
+			function getStyleTemplate (data) {
+			  const colorMap = {
+			    '#B7A3FF': 'familyPrimary',
+			    '#879FFF': 'familySecondary',
+			    '#8981D8': 'sideBarTop'
+			  }
+			  Object.keys(colorMap).forEach(key => {
+				  console.log('9999999999',key)
+			    const value = colorMap[key]
+				console.log(value,'value')
+			    data = data.replace(new RegExp(key, 'ig'), value)
+			  })
+			  return data
+			}
+			/* console.log(getStyleTemplate('#B7A3FF'),'lllllllll') */
+			function writeNewStyle (originalStyle, colors) {
+			  // console.log('oi')
+			  let oldEl = document.getElementById('temp-style')
+			  console.log('oi',oldEl)
+			  let cssText = originalStyle
+			  Object.keys(colors).forEach(key => {
+				cssText = cssText.replace(new RegExp(key, 'ig'), colors[key])
+			  })
+			  const style = document.createElement('style')
+			  style.innerText = cssText
+			  style.id = 'temp-style'
+			  console.dir(style,'style')
+			  oldEl ? document.head.replaceChild(style, oldEl) : document.head.appendChild(style)
+			}		
+			writeNewStyle('#B7A3FF',{
+			    '#B7A3FF': 'familyPrimary',
+			    '#879FFF': 'familySecondary',
+			    '#8981D8': 'sideBarTop'
+			  })
+		</script>
+	</body>
+</html>

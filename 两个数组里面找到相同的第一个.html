@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			
+		let originArr = ["contractBaseInfo.contractName", "contractBaseInfo.agenter", "contractBaseInfo.selectContractParticipantInfos",
+		 "contractBaseInfo.contractContent", "contractBaseInfo.contractTypeNameLable", "contractBaseInfo.supervisor", "contractBaseInfo.demandDept",
+		  "contractBaseInfo.contractSubjectName", "contractBaseInfo.postponed", "contractBaseInfo.name", "contractBaseInfo.certificateNumber",
+		   "contractBaseInfo.businessDirector", "contractText.usageSealType", "contractText.confidentialityLevel"]
+		let NewArr = [ "contractBaseInfo.contractTypeNameLable", "contractBaseInfo.supervisor", "contractBaseInfo.demandDept",
+		  "contractBaseInfo.contractSubjectName"]
+		let first = ''
+		let flag = true
+		let item = NewArr.forEach((item)=>{
+			console.log(item,'item')
+			originArr.forEach((it)=>{
+					
+				if(it.includes(item)&&flag){
+					console.log('看看是第一个',item)
+					first = item
+					flag = false
+				}
+				// item==it
+				// console.log(item,'newArr')
+				
+			})
+			// console.log(conditions)
+		})
+		console.log(first,'first')			
+		</script>
+
+	</body>
+</html>

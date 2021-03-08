@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function getLen(str) {
+			    var name = '';
+			    var len = 0;
+			    var strlen = 0;
+			    for (var i = 0; i < str.length; i++) {
+			        charCode = str.charCodeAt(i);
+			        if (charCode >= 0 && charCode <= 128)
+			            len += 1;
+			        else
+			            len += 2;
+			    } 
+			    return len;
+			}
+			console.log(getLen('सम्')) 
+		</script>
+	</body>
+</html>

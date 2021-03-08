@@ -8,9 +8,10 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			const setAjaxUrlArrList = [{
+			const setAjaxUrlArrList = [
+				{
 			      url: 'leader',
-			      title: 'myTopSup'
+			      title: 1
 			    }, // 我的上级
 			    {
 			      url: 'list/subordinate',
@@ -18,21 +19,56 @@
 			    }, // 我的下级
 			    {
 			      url: 'list/attention',
-			      title: 'myAtt'
+			      title: undefined
 			    }, // 我的关注
 			    {
 			      url: 'list/myalign',
-			      title: 'myAlign'
+			      title: null
 			    }, // 我的对齐
 			    {
 			      url: 'list/aligntome',
-			      title: 'toMyAlign'
+			      title: {nihao:'nihao'},
+				  tr:'tr'
 			    } // 向我对齐
 			]
-			let  requestAll = setAjaxUrlArr.map(item =>
-				console.log(item,'item')
-			  )
-			  
+			/*var arr = setAjaxUrlArrList.map(({url,title},index)=>{
+					if(index<=2){
+						return {url,title}
+					}
+					// return {url,title}
+				})
+			console.log(arr)*/
+			// /*
+			var arr = setAjaxUrlArrList.map((item)=>{
+					
+				if(item.tr){
+					return {...item,children:item.tr}
+				}
+				return {item}
+				})
+			console.log(arr,'arr')	
+				
+				
+				
+				
+				
+			// */
+		   /*
+			var array = [
+				{
+					id:1,
+					name:"小明"
+				},
+				{
+					id:2,
+					name:"小红"
+				}
+			];
+			var result = array.map(o=>{return{value:o.id, label:o.name}});
+			
+			
+			console.log(result)
+			*/
 		</script>
 	</body>
 </html>

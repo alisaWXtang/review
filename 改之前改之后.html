@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let arr = [ 
+				['contractContent','1','2'],
+				['contractSerify','2','3']
+			]
+				
+			function haveKey(val){
+					
+				let redItem = arr.find((item)=>{
+					return item[0]===val
+				})
+					
+				if(redItem){
+					return redItem
+				}
+				return []
+			}
+			
+		</script>
+	</body>
+</html>

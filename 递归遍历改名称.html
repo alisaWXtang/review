@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let arr = [
+				{
+					code: "1",
+					id: "708926a588624ce4be7726b0103b9286",
+					value: "数据采集及标注类",
+				},
+				{
+					code: "2",
+					id: "c9c089437f4443149e011c4863e6babf",
+					value: "营销活动类",
+					list:[
+						{
+							code: "4",
+							id: "c9c089437f4443149e011c4863e6babd",
+							value: "营销活动类A-1",
+							list:[
+								{
+									code: "5",
+									id: "c9c089437f4443149e011c4863e6baed",
+									value: "营销活动类A-2",
+								}
+							]
+						}
+					]
+				},
+				{
+					code: "3",
+					id: "a7d10e3d62764f128d6fb0790049d60b",
+					value: "内容版权类"
+				}
+			]
+				function handleTreeData(data) {
+			      const mappedData = data.map(item => {
+					console.log(item,'item==35')
+			        const mappedItem = {
+			          value: item.id,
+			          label: item.value,
+			          code: item.code,
+			          id: item.id
+			        }
+			        if (item.list) {
+			          return {
+			            ...mappedItem,
+			            children: handleTreeData(item.list)
+			          }
+			        }
+			        return mappedItem
+			      })
+				  console.log(mappedData,'mappedData==50')
+			      return mappedData
+			    }
+				let brr = handleTreeData(arr)
+				console.log(brr,'arr---52')
+		</script>
+	</body>
+</html>

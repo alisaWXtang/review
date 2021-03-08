@@ -8,12 +8,12 @@
 </head>
 <body>
 
-            
+<!--            
     <p>点击按钮将数组中的所有值乘以特定数字。</p>
     <p>乘以: <input type="number" id="multiplyWith" value="10"></p>
-    <button onclick="numbers.forEach(myFunction)">点我</button>
+    <button onclick="numbers.forEach(myFunction)">点我</button> -->
 
-    <p>计算后的值: <span id="demo"></span></p>
+<!--    <p>计算后的值: <span id="demo"></span></p>
 
     <script>
     var numbers = [65, 44, 12, 4];
@@ -24,7 +24,24 @@
         console.log(item,index,arr);
         console.log(arr[index]);
     }
-    console.log(numbers);
+    console.log(numbers); -->
+	<script type="text/javascript">
+		let arr = [
+			{ label:'A',flag:'N' },
+			{ label:'B',flag:'Y' },
+			{ label:'C',flag:'N' },
+			{ label:'D',flag:'Y' },
+			{ label:'E',flag:'Y' },
+		]
+		let outFlag = 0
+		arr.forEach((item,index)=>{
+			if(item.flag==='Y'){
+				outFlag = index
+			}
+		})
+		console.log(outFlag,'outFlag')
+	</script>
+	
     </script>
 </body>
 </html>

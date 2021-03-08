@@ -1,0 +1,392 @@
+<template>
+  <div id="page-order-center">
+    <el-card class="serach-card">
+      <el-form
+        ref="orderForm"
+        :model="orderForm"
+        class="serach-from"
+        label-width="100px"
+        label-position="right"
+        label-suffix="："
+      >
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="申请时间" prop="applyTime">
+              <el-date-picker
+                v-model="orderForm.applyTime"
+                type="datetimerange"
+                start-placeholder="开始时间"
+                end-placeholder="结束时间"
+                class="input-width"
+                :editable="false"
+                value-format="yyyy-MM-dd hh:mm:ss"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="生效时间" prop="effectTime">
+              <el-date-picker
+                v-model="orderForm.effectTime"
+                type="datetimerange"
+                range-separator="—"
+                start-placeholder="生效时间"
+                end-placeholder="截止时间"
+                value-format="yyyy-MM-dd hh:mm:ss "
+                class="input-width"
+                :editable="false"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="合作方式" prop="cooperationMode">
+              <el-select
+                v-model="orderForm.cooperationMode"
+                multiple
+                collapse-tags
+                placeholder="请选择"
+                class="input-width"
+                @change="changeStatus($event,'cooperationMode')"
+              >
+                <el-option
+                  v-for="(item,index) in cooperationModeTypes"
+                  :key="index"
+                  :label="item.cooperationMode"
+                  :value="item.cooperationMode"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="业务类别" prop="businessType">
+              <el-select
+                v-model="orderForm.businessType"
+                multiple
+                collapse-tags
+                placeholder="请选择"
+                class="input-width"
+                @change="changeStatus($event,'businessCategory')"
+              >
+                <el-option
+                  v-for="item in businessCategoryTypes"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="是否延期" prop="isExtension">
+              <el-select
+                v-model="orderForm.isExtension"
+                placeholder="请选择"
+                class="input-width"
+              >
+                <el-option
+                  v-for="item in isDelayTypes"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="订单状态" prop="status">
+              <el-select
+                v-model="orderForm.status"
+                multiple
+                collapse-tags
+                placeholder="请选择"
+                class="input-width"
+                @change="changeStatus($event,'status')"
+              >
+                <el-option
+                  v-for="item in orderStatusTypes"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="订单号" prop="orderNo">
+              <auto-complete
+                v-model="orderForm.orderNo"
+                class="input-width"
+                placeholder="请填写订单号"
+                query-type="1"
+                @keyup.enter.native="clickQuery"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="公司名称" prop="companyName">
+              <auto-complete
+                v-model="orderForm.companyName"
+                class="input-width"
+                placeholder="请填写对方或我方公司主体"
+                query-type="2"
+                @keyup.enter.native="clickQuery"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="处理人" prop="processCurrentUserId">
+              <auto-complete
+                v-model="orderForm.processCurrentUserId"
+                class="input-width"
+                placeholder="请填写当前处理人"
+                query-type="3"
+                @keyup.enter.native="clickQuery"
+              />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <div class="tc m-t-20">
+        <el-button type="primary" class="fixed-width" @click="clickQuery">查询</el-button>
+        <el-button class="fixed-width reset-btn" plain @click="clickReset()">重置</el-button>
+      </div>
+    </el-card>
+
+    <div class=" m-t-60 flex justify-content-between">
+      <ul class="tab-group-btn dib ">
+        <li :class="orderForm.orderListType===0?'active':''" @click="changeOrderListType(0)" v-text="`待处理${todoCount>0?todoCount :''}`"></li>
+        <li :class="orderForm.orderListType===1?'active':''" @click="changeOrderListType(1)">已处理</li>
+        <li :class="orderForm.orderListType===2?'active':''" @click="changeOrderListType(2)">全部</li>
+      </ul>
+    </div>
+
+    <el-card class="m-t-20 card-table">
+      <el-table
+        id="order-table"
+        ref="orderTable"
+        :data="tableData"
+      >
+        <el-table-column type="selection" width="55" align="center" min-width="30" />
+        <el-table-column label="序号" min-width="60" align="center">
+          <template slot-scope="scope">
+            {{ (orderForm.pageNum - 1) * orderForm.pageSize + scope.$index + 1 }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="orderNo" label="订单号" min-width="100" align="center" show-overflow-tooltip>
+          <template slot-scope="scope">
+            <span class="link text-status-green" @click="goToDetail(scope.row.id)">{{ scope.row.orderNo }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="oppositeCompanyName" label="对方公司主体" min-width="140" align="center" show-overflow-tooltip />
+        <el-table-column prop="ourCompanyName" label="我方公司主体" min-width="140" align="center" show-overflow-tooltip />
+        <el-table-column prop="businessCode" label="业务类别" min-width="120" align="center" />
+        <el-table-column prop="cooperationMode" label="合作方式" min-width="100" align="center" />
+        <el-table-column prop="isExtension" label="是否延期" min-width="100" align="center">
+          <template slot-scope="scope">
+            <span v-if="scope.row.isExtension === '0'">不延期</span>
+            <span v-else>延期</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="procesStatus" label="审批状态" min-width="110" align="center">
+          <template slot-scope="scope">
+            <span v-if="scope.row.procesStatus === '0'">待审批</span>
+            <span v-else-if="scope.row.procesStatus === '1'">已同意</span>
+            <span v-else-if="scope.row.procesStatus === '2'">已拒绝</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="status" label="订单状态" min-width="110" align="center">
+          <template slot-scope="scope">
+            <span v-if="scope.row.status === 0">未生效</span>
+            <span v-else-if="scope.row.status === 1">生效中</span>
+            <span v-else-if="scope.row.status === 2">提前失效</span>
+            <span v-else-if="scope.row.status === 3">已失效</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="processCurrentUserId" label="处理人" min-width="130" align="center" show-overflow-tooltip />
+        <el-table-column
+          label="操作"
+          width="100"
+          fixed="right"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <el-button type="text" @click="goToDetail(scope.row.id)">去处理></el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
+
+    <div class="tc p-t-20 p-b-20">
+      <el-pagination
+        :current-page="orderForm.pageNum"
+        :page-sizes="[30,50, 100,200]"
+        :page-size="orderForm.pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        @prev-click="handlePrev"
+        @next-click="handleNext"
+      />
+    </div>
+
+  </div>
+</template>
+
+<script>
+import { getOrderListRequest, getCooperationModeRequest } from '@/api/order'
+import { types } from '@/mixins/types'
+import AutoComplete from '@/components/AutoComplete'
+export default {
+  name: 'OrderCenter',
+  components: { AutoComplete },
+  data() {
+    return {
+      orderForm: {
+        applyTime: '', // 申请时间
+        effectTime: '', // 生效时间
+        cooperationMode: '', // 合作方式
+        businessType: '', // 业务类别
+        isExtension: '', // 是否延期
+        status: '', // 订单状态
+        orderNo: '', // 订单号
+        companyName: '', // 公司名称
+        processCurrentUserId: '', // 处理人
+        pageNum: 1,
+        pageSize: 30,
+        orderListType: 0 // 0:待审批 1:已审批 2全部
+      },
+      tableData: [],
+      todoCount: 0,
+      total: 0,
+      cooperationModeTypes: [],
+      isDelayTypes: types.data().isDelayTypes,
+      orderStatusTypes: types.data().orderStatusTypes,
+      businessCategoryTypes: [] // 这个数据需要发请求
+    }
+  },
+  mounted() {
+    this.getOrderList()
+    this.getCooperationMode()
+  },
+  methods: {
+    async getCooperationMode() {
+      const res = await getCooperationModeRequest()
+      console.log('res', res)
+      this.cooperationModeTypes = res.data
+    },
+    clickQuery() {
+      this.orderForm.pageNum = 1
+      this.getOrderList()
+      this.$store.commit('settlementManagement/SET_ORDER_FORM', this.orderForm)
+    },
+
+    clickReset() {
+      this.orderForm.pageNum = 1
+      this.$refs['orderForm'].resetFields()
+    },
+
+    goToDetail(id) {
+      this.$router.push({ name: 'OrderDetail', params: { id } })
+    },
+    async getOrderList() {
+      console.log('orderForm', this.orderForm)
+      const orderNo = this.orderForm.orderNo
+      const businessType = ''
+      const cooperationMode = ''
+      const effectiveStartTime = this.orderForm.effectTime[0]
+      const effectiveEndTime = this.orderForm.effectTime[1]
+      const applyStartTime = this.orderForm.applyTime[0]
+      const applyEndTime = this.orderForm.applyTime[1]
+      const companyName = this.orderForm.companyName
+      const processCurrentUserId = this.orderForm.processCurrentUserId
+      const data = await getOrderListRequest({
+        orderNo, businessType, cooperationMode,
+        effectiveStartTime, effectiveEndTime,
+        applyStartTime, applyEndTime, companyName, processCurrentUserId,
+        pageNum: this.orderForm.pageNum, pageSize: this.orderForm.pageSize,
+        procesStatus: this.orderForm.orderListType, userId: 'W9004104'
+      })
+      this.tableData = data.data.orderInfoPageInfo.list
+      this.todoCount = data.data.upcomingOrderCount
+      this.total = data.data.orderInfoPageInfo.total
+    },
+
+    changeOrderListType(type) {
+      this.orderForm.orderListType = type
+      this.getOrderList()
+    },
+
+    // 分页
+    handleSizeChange(val) {
+      this.orderForm.pageNum = 1
+      this.orderForm.pageSize = val
+      this.getOrderList()
+    },
+    handleCurrentChange(val) {
+      this.orderForm.pageNum = val
+      this.getOrderList()
+    },
+    handlePrev(val) {
+      this.orderForm.pageNum = val
+      this.getOrderList()
+    },
+    handleNext(val) {
+      this.orderForm.pageNum = val
+      this.getOrderList()
+    },
+    changeStatus(val, str) {
+      const flg = val[val.length - 1] === '0'
+      if (flg) {
+        this.orderForm[str] = ['0']
+      } else {
+        val.forEach((element, index) => {
+          if (element === '0') {
+            this.orderForm[str].splice(index, 1)
+          }
+        })
+      }
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+#page-order-center{
+  .text-status-green {
+    color: #04b4a5;
+  }
+  .input-width{
+    width: 90%;
+    @media screen and (max-width: $small-adaptation) {
+      width: 100%;
+    }
+  }
+  /deep/.el-pagination__editor{
+    .el-input__inner {
+      font-size: 12px;
+      line-height: 28px;
+    }
+  }
+  .el-col{
+    height: 57px;
+    @media screen and (max-width: $small-adaptation) {
+      height: 42px;
+    }
+  }
+  /deep/.serach-from .el-range-editor--medium .el-range-input{
+    @media screen and (max-width: $small-adaptation){
+      width: 100%;
+    }
+  }
+  /deep/.el-form-item__label {
+    padding: 0 9px 0 0
+  }
+  /deep/.el-table .cell {
+    white-space: nowrap;
+  }
+}
+</style>

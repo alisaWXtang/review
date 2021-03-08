@@ -114,15 +114,11 @@ var p = new Promise((resolve,reject)=>{
 // /*		
 //第一个异步任务
 	function run_a(){
-		
 		return Promise.resolve([{ // 静态数据配置方式
-		          name: '新建团队回顾',
-		          id: '0',
-		          url: '/teamList?t=' + new Date().getTime()
-		        }])
-				
-				
-				
+			  name: '新建团队回顾',
+			  id: '0',
+			  url: '/teamList?t=' + new Date().getTime()
+		}])				
 	}
 	//第二个异步任务
 	function run_b(data_a){
